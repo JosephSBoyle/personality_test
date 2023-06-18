@@ -1,57 +1,70 @@
 <!DOCTYPE HTML>
 <html>
-
-<head>
-    <title>Big 5 Personality Test</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-</head>
-
-<body>
-    <h1>Results</h1>
-
-    <div>
-        <canvas id="myChart"></canvas>
-    </div>
-
-    {{range $trait, $score := .}}
-    <br>{{$trait}}: {{$score}}
-    {{end}}
-
-    <script>
-        const ctx = document.getElementById('myChart');
-        /*
-        This is a hack to work around the fact that JSON arrays aren't allowed to have
-        trailing commas! 
-        */
-        let labelString = "{{range $trait, $score := .}}{{$trait}},{{end}}"
-        let modifiedLabelString = labelString.slice(0, -1);
-        let labels = modifiedLabelString.split(",");
-
-        let valueString = "{{range $trait, $score := .}}{{$score}},{{end}}"
-        let modifiedValueString = valueString.slice(0, -1);
-        let values = modifiedValueString.split(",");
-
-        new Chart(ctx, {
-            type: 'bar',
-            data: {
-                labels: labels,
-                datasets: [{
-                    label: 'Trait score',
-                    data: values,
-                    borderWidth: 1
-                }]
-            },
-            options: {
-                scales: {
-                    y: {
-                        min: -1,
-                        max: 20
-                    }
+    <head>
+        <style>
+            @media (max-width: 600px) {
+                body {
+                font-size: 400%;
                 }
             }
-        });
-    </script>
+            @media (min-width: 601px) and (max-width: 1024px) {
+                body {
+                font-size: 200%;
+                }
+            }
+            @media (min-width: 1025px) {
+                body {
+                font-size: 150%;
+                }
+            }
+        </style>
+        <title>Big 5 Personality Test</title>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    </head>
+    <body>
+        <h2 style="text-align: center">Results</h2>
+        <div>
+            <canvas id="myChart"></canvas>
+        </div>
+        <br>
+        <br>
+        <table style="margin-left:auto; margin-right:auto">
+            {{range $trait, $score := .}}
+            <tr>
+                <td style="padding-right:50px">{{$trait}}</td>
+                <td><t>{{$score}}</td>
+            </tr>
+            {{end}}
+        </table>
+        <script>
+            const ctx = document.getElementById('myChart');
 
-</body>
+            // The following two lines are a hack to work around the fact that JSON arrays
+            // aren't allowed to have trailing commas!
+            let labels = "{{range $trait, $score := .}}{{$trait}},{{end}}".slice(0, -1).split(",")
+            let values = "{{range $trait, $score := .}}{{$score}},{{end}}".slice(0, -1).split(",")
 
+            Chart.defaults.font.size = 30;
+
+            new Chart(ctx, {
+                type: 'bar',
+                data: {
+                    labels: labels,
+                    datasets: [{
+                        label: 'Trait score',
+                        data: values,
+                        borderWidth: 3
+                    }]
+                },
+                options: {
+                    scales: {
+                        y: {
+                            min: 0,
+                            max: 20,
+                        },
+                    },
+                }
+            });
+        </script>
+    </body>
 </html>
