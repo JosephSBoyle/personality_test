@@ -55,7 +55,7 @@ func handlePost(w *http.ResponseWriter, r *http.Request, q *quiz) {
 
 		trait := q.Questions[indexValue].Trait
 		fmt.Println(index, response)
-		traitScores[trait] += int(responseValue)
+		traitScores[trait] += responseValue
 	}
 
 	template := template.Must(template.ParseFiles("results.html"))
