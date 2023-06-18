@@ -10,13 +10,19 @@ import (
 	"text/template"
 )
 
+type statistics struct {
+	MinScore int `json:"minScore"`
+	MaxScore int `json:"maxScore"`
+}
+
 type questions struct {
 	Trait string `json:"trait"` // Which trait does this question measure?
 	Text  string `json:"text"`
 }
 
 type quiz struct {
-	Questions []questions `json:"questions"`
+	Statistics statistics  `json:"statistics"`
+	Questions  []questions `json:"questions"`
 }
 
 func handler(w http.ResponseWriter, r *http.Request, q *quiz) {
@@ -54,7 +60,6 @@ func handlePost(w *http.ResponseWriter, r *http.Request, q *quiz) {
 		}
 
 		trait := q.Questions[indexValue].Trait
-		fmt.Println(index, response)
 		traitScores[trait] += responseValue
 	}
 

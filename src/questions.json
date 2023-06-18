@@ -1,4 +1,8 @@
 {
+    "statistics": {
+        "minScore": 0,
+        "maxScore": 20
+    },
     "questions": [
         {"trait": "openness", "text": "I am the life of the party."},
         {"trait": "openness", "text": "I feel comfortable around people."},
@@ -20,14 +24,10 @@
         {"trait": "agreeableness", "text": "I have a soft heart."},
         {"trait": "agreeableness", "text": "I take time out for others."},
         {"trait": "agreeableness", "text": "I feel others' emotions."},
-        {"trait": "agreeableness", "text": "I make people feel at ease."},
         {"trait": "neuroticism", "text": "I get stressed out easily."},
         {"trait": "neuroticism", "text": "I worry about things."},
-        {"trait": "neuroticism", "text": "I am easily disturbed."},
-        {"trait": "neuroticism", "text": "I get upset easily."},
         {"trait": "neuroticism", "text": "I change my mood a lot."},
         {"trait": "neuroticism", "text": "I have frequent mood swings."},
-        {"trait": "neuroticism", "text": "I get irritated easily."},
         {"trait": "neuroticism", "text": "I often feel blue."}
     ]
 }
