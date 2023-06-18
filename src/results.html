@@ -1,0 +1,12 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Big 5 Personality Test</title>
+    </head>
+    <body>
+        <h1>Results</h1>
+        {{range $trait, $score := .}}
+            <br>{{$trait}}: {{$score}}
+        {{end}}
+    </body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE HTML>
+<html>
+    <head>
+        <title>Big 5 Personality Test</title>
+    </head>
+    <body>
+        <h1>Big 5 Personality Test</h1>
+        <form action="/" method="POST">
+            {{range $index, $question := .Questions}}
+                <p>
+                    {{$question.Text}}<br>
+
+                    <input type="radio" id={{$index}} name="{{$index}}" value="1">
+                    <label for={{$index}}>Disagree</label><br>
+                    
+                    <input type="radio" id={{$index}} name="{{$index}}" value="2">
+                    <label for={{$index}}>Slightly disagree</label><br>
+                    
+                    <input type="radio" id={{$index}} name="{{$index}}" value="3">
+                    <label for={{$index}}>Neutral</label><br>
+                    
+                    <input type="radio" id={{$index}} name="{{$index}}" value="4">
+                    <label for={{$index}}>Slightly agree</label><br>
+                    
+                    <input type="radio" id={{$index}} name="{{$index}}" value="5">
+                    <label for={{$index}}>Agree</label><br>
+                </p>
+            {{end}}
+            <input type="submit" value="Submit">
+        </form>
+    </body>
+</html>
