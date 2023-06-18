@@ -1,6 +1,31 @@
 <!DOCTYPE HTML>
 <html>
     <head>
+        <style>
+            body {
+                font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            }
+            @media (max-width: 600px) {
+                body {
+                font-size: 400%;
+                }
+            }
+            @media (min-width: 601px) and (max-width: 1024px) {
+                body {
+                font-size: 250%;
+                }
+            }
+            @media (min-width: 1025px) {
+                body {
+                font-size: 150%;
+                }
+            }
+            input[type="radio"] {
+                transform: scale(1.75); /* Adjust the scale factor to increase or decrease the size */
+                margin-left : 8em;
+                margin-right: 4em; /* Optional: Add some spacing between the radio button and the label */
+            }
+        </style>
         <title>Big 5 Personality Test</title>
     </head>
     <body>
@@ -8,25 +33,28 @@
         <form action="/" method="POST">
             {{range $index, $question := .Questions}}
                 <p>
-                    {{$question.Text}}<br>
+                    <hr size="2" width="75%">
+
+                    {{$question.Text}}<br><br>
 
                     <input type="radio" id={{$index}} name="{{$index}}" value="0">
-                    <label for={{$index}}>Disagree</label><br>
+                    <label for={{$index}}>disagree</label><br>
                     
                     <input type="radio" id={{$index}} name="{{$index}}" value="1">
-                    <label for={{$index}}>Slightly disagree</label><br>
+                    <label for={{$index}}>slightly disagree</label><br>
                     
                     <input type="radio" id={{$index}} name="{{$index}}" value="2" checked>
-                    <label for={{$index}}>Neutral</label><br>
+                    <label for={{$index}}>neutral</label><br>
                     
                     <input type="radio" id={{$index}} name="{{$index}}" value="3">
-                    <label for={{$index}}>Slightly agree</label><br>
+                    <label for={{$index}}>slightly agree</label><br>
                     
                     <input type="radio" id={{$index}} name="{{$index}}" value="4">
-                    <label for={{$index}}>Agree</label><br>
+                    <label for={{$index}}>agree</label><br>
+
                 </p>
             {{end}}
-            <input type="submit" value="Submit">
+            <input style="font-size:150%" type="submit" value="Submit">
         </form>
     </body>
 </html>

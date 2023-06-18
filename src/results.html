@@ -2,6 +2,9 @@
 <html>
     <head>
         <style>
+            body {
+                font-family: 'Helvetica Neue', 'Helvetica', 'Arial', sans-serif;
+            }
             @media (max-width: 600px) {
                 body {
                 font-size: 400%;
@@ -9,7 +12,7 @@
             }
             @media (min-width: 601px) and (max-width: 1024px) {
                 body {
-                font-size: 200%;
+                font-size: 250%;
                 }
             }
             @media (min-width: 1025px) {
@@ -45,11 +48,15 @@
             let values = "{{range $trait, $score := .}}{{$score}},{{end}}".slice(0, -1).split(",")
 
             Chart.defaults.font.size = 30;
-
+            
+            function capitalize(s) {
+                return s[0].uppercase() + s;
+            }
             new Chart(ctx, {
                 type: 'bar',
                 data: {
-                    labels: labels,
+                    // Capitalize the labels.
+                    labels: labels.map(label => label.charAt(0).toUpperCase() + label.substr(1)),
                     datasets: [{
                         label: 'Trait score',
                         data: values,
